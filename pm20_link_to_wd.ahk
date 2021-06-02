@@ -33,13 +33,17 @@ return
 ;; on an English Wikipedia page
 ;; - load Wikidata item
 ^+l::
-Send, ^fWikidata item{Enter}{Esc}{Enter}
+Send, ^fWikidata item{Enter}
+Sleep, 200
+Send, {Esc}{Enter}
 return
 
 ;; on a German Wikipedia page
 ;; - load Wikidata item
 ^+ö::
-Send, ^fWikidata-Datenobjekt{Enter}{Esc}{Enter}
+Send, ^fWikidata-Datenobjekt{Enter}
+Sleep, 200
+Send, {Esc}{Enter}
 return
 
 ;; on a Wikidata page
@@ -48,11 +52,11 @@ return
 Send ^f
 Send, add statement{Tab}
 Send, {Esc}
-Sleep, 500
+Sleep, 200
 Send, {Enter}
-Sleep, 1000
+Sleep, 500
 Send, P4293
-Sleep, 1000
+Sleep, 1500
 Send, {Down}
 Sleep, 200
 Send, {Enter}
@@ -81,13 +85,18 @@ return
 ;; on a Wikidata page
 ;; - save
 ;; - close current tab
-;; - close PM20 tab
 ^+o::
 Send, {Enter}
 Sleep, 500
 Send, ^w
+Sleep, 500
 SetTitleMatchMode, 1
 IfWinActive, Startpage
+{
+  Send, ^w
+}
+SetTitleMatchMode, 2
+IfWinActive, at DuckDuckGo
 {
   Send, ^w
 }
